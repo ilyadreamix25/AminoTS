@@ -83,6 +83,9 @@ export class Event extends EventEmitter {
                         const newNdcBot = this.bot;
                         newNdcBot.ndcId = wsMessage.o.ndcId;
 
+                        parameters = parameters ? parameters : {};
+                        parameters.replyTo = wsMessage.o.chatMessage.messageId;
+
                         const message = await newNdcBot.sendTextMessage(
                             text,
                             wsMessage.o.chatMessage.threadId,

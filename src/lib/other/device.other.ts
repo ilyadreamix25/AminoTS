@@ -3,7 +3,7 @@ import { Constants } from "./const.other.js";
 
 export class DeviceUtility {
     /**
-     * Generate device identifier from given `data`
+     * Generate device identifier from given {@link data}
      * @param data Data from which to generate an ID
      * @returns Device identifier
      */

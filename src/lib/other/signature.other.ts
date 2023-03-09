@@ -3,7 +3,7 @@ import { Constants } from "./const.other.js";
 
 export class SignatureUtility {
     /**
-     * Generate signature from given `data`
+     * Generate signature from given {@link data}
      * @param data Data from which to generate a signature
      * @returns Signature
      */

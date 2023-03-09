@@ -6,8 +6,8 @@ export class Utility {
      * Get path from NDC ID:
      * <pre>
      *     NDC ID == 0 -> /g/s
-     *     NDC ID  > 0 -> /x{@param ndcId}/s
-     *     NDC ID  < 0 -> /s-x{@param ndcId}
+     *     NDC ID  > 0 -> /x{@link ndcId}/s
+     *     NDC ID  < 0 -> /s-x{@link ndcId}
      * </pre>
      * @param ndcId NDC ID from which to get the path
      * @returns Path from the NDC ID
@@ -22,7 +22,7 @@ export class Utility {
     }
 
     /**
-     * Get session information from {@param sid}
+     * Get session information from {@link sid}
      * @param sid Session ID from which to get the session info
      * @returns Session info
      */

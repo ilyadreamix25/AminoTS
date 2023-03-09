@@ -13,6 +13,13 @@ export interface EventChatMessageO extends EventO {
     alertOption: number;
     chatMessage: ChatMessage;
     membershipStatus: number;
+    /**
+     * Reply to message with text
+     * @param text Text to send
+     * @param parameters Message parameters
+     * @see {@link SendTextMessageParameters}
+     * @returns Chat message
+     */
     replyText: (text: string, parameters?: SendTextMessageParameters) => Promise<MessageResponse>;
 }
 
