@@ -1,0 +1,27 @@
+{
+    "name": "aminots",
+    "version": "1.0.0",
+    "description": "A modern library for accessing the AminoApps API",
+    "keywords": [
+        "aminoapps",
+        "amino",
+        "narvii",
+        "typescript"
+    ],
+    "author": "IlyaDreamix",
+    "license": "MIT",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "devDependencies": {
+        "@types/node": "^18.14.6",
+        "@types/node-fetch": "^2.6.2",
+        "@types/ws": "^8.5.4"
+    },
+    "dependencies": {
+        "node-fetch": "^3.3.0",
+        "ws": "^8.12.1"
+    }
+}
