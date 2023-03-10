@@ -70,7 +70,7 @@ export class Event extends EventEmitter {
         });
 
         this.ws.on("error", (error) => {
-            console.error(error);
+            if (this.bot.cfg.throwErrors) throw error;
         });
 
         this.ws.on("message", bufferMessage => {
@@ -83,7 +83,7 @@ export class Event extends EventEmitter {
                         const newNdcBot = this.bot;
                         newNdcBot.ndcId = wsMessage.o.ndcId;
 
-                        parameters = parameters ? parameters : {};
+                        parameters = parameters ?? {};
                         parameters.replyTo = wsMessage.o.chatMessage.messageId;
 
                         const message = await newNdcBot.sendTextMessage(

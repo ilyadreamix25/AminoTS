@@ -14,19 +14,21 @@ export class Bot {
     profile?: models.account.UserProfile;
     account?: models.account.Account;
 
+    cfg: models.bot.LibraryConfig;
+
     private event: Event;
     private request: Request;
 
-    constructor(
-        sessionId?: string,
-        ndcId = 0,
-        deviceId = DeviceUtility.generateDeviceId(),
-        userAgent = Request.DefaultHeaderValues.USER_AGENT
-    ) {
-        this.deviceId = deviceId;
-        this.ndcId = ndcId;
-        this.sessionId = sessionId;
-        this.userAgent = userAgent;
+    constructor(parameters?: models.bot.BotParameters) {
+        this.deviceId = parameters?.deviceId ?? DeviceUtility.generateDeviceId();
+        this.ndcId = parameters?.ndcId ?? 0;
+        this.sessionId = parameters?.sessionId;
+        this.userAgent = parameters?.userAgent ?? Request.DefaultHeaderValues.USER_AGENT;
+
+        this.cfg = parameters?.libraryConfig ?? {
+            debug: false,
+            throwErrors: true
+        }
 
         this.request = new Request(this);
     }

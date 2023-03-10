@@ -1,5 +1,7 @@
 import { Bot } from "./bot.lib.js"
 import { RequestParameters } from "./models/request.models.js"
+import { AminoResponse } from "./models/response.models.js";
+import { AminoError } from "./other/errors.other.js";
 import { SignatureUtility } from "./other/signature.other.js"
 import { Utility } from "./other/utility.other.js"
 
@@ -59,6 +61,19 @@ export class Request {
             Utility.getPathFromNdc(parameters.ndcId) + path,
             requestInit
         );
+
+        let jsonResponse: AminoResponse ;
+
+        try {
+            jsonResponse = await response.clone().json();
+        } catch (e) {
+            const error = AminoError.Unknown;
+            error.message = e.message;
+            throw error;
+        }
+
+        if (jsonResponse["api:statuscode"] != 0 && this.bot.cfg.throwErrors)
+            throw new AminoError(jsonResponse["api:message"], jsonResponse["api:statuscode"]);
 
         return response;
     }
